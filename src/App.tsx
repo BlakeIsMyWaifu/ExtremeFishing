@@ -1,16 +1,13 @@
 import { OrbitControls } from '@react-three/drei'
-import { Canvas, RenderProps, extend } from '@react-three/fiber'
-import Ice from 'Ice'
+import { Canvas, RenderProps } from '@react-three/fiber'
+import Boat from 'Boat'
 import { FC, Suspense } from 'react'
-import { Vector3 } from 'three'
-
-extend({ Vector3 })
 
 const Scene: FC = () => {
 	return (
 		<>
-			<pointLight intensity={1.0} position={[0, 10, 0]} />
-			<Ice />
+			<hemisphereLight args={['#fff', '#333', 1]} />
+			<Boat />
 		</>
 	)
 }
@@ -21,7 +18,7 @@ const App: FC = () => {
 
 	const camera: CanvasProps['camera'] = {
 		fov: 90,
-		position: new Vector3(8, 2.5, 0)
+		position: [5, 2, 0]
 	}
 
 	const onCreated: CanvasProps['onCreated'] = ({ gl }) => {
