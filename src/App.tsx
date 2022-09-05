@@ -1,6 +1,7 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas, RenderProps } from '@react-three/fiber'
 import Boat from 'Boat'
+import Ocean from 'Ocean'
 import { FC, Suspense } from 'react'
 
 const Scene: FC = () => {
@@ -8,6 +9,7 @@ const Scene: FC = () => {
 		<>
 			<hemisphereLight args={['#fff', '#333', 1]} />
 			<Boat />
+			<Ocean />
 		</>
 	)
 }
