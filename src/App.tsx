@@ -1,4 +1,4 @@
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Sky } from '@react-three/drei'
 import { Canvas, RenderProps } from '@react-three/fiber'
 import Boat from 'Boat'
 import Ocean from 'Ocean'
@@ -8,8 +8,16 @@ const Scene: FC = () => {
 	return (
 		<>
 			<hemisphereLight args={['#fff', '#333', 1]} />
-			<Boat />
+
+			<Sky
+				inclination={0.6}
+				azimuth={0.12}
+				rayleigh={0.8}
+				turbidity={0.4}
+			/>
 			<Ocean />
+
+			<Boat />
 		</>
 	)
 }
@@ -19,12 +27,8 @@ type CanvasProps = RenderProps<HTMLCanvasElement>
 const App: FC = () => {
 
 	const camera: CanvasProps['camera'] = {
-		fov: 90,
-		position: [5, 2, 0]
-	}
-
-	const onCreated: CanvasProps['onCreated'] = ({ gl }) => {
-		gl.setClearColor('#A6D0EF')
+		fov: 75,
+		position: [8, 1.5, 0]
 	}
 
 	return (
@@ -32,7 +36,7 @@ const App: FC = () => {
 			height: '100vh',
 			width: '100vw'
 		}}>
-			<Canvas camera={camera} onCreated={onCreated}>
+			<Canvas camera={camera}>
 				<OrbitControls />
 				<Suspense fallback={null}>
 					<Scene />
