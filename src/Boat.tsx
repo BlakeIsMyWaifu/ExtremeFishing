@@ -1,11 +1,12 @@
+import { GroupProps } from '@react-three/fiber'
 import { FC } from 'react'
 
-const Boat: FC = () => {
+const Boat: FC<GroupProps> = groupProps => {
 
 	const colour = '#8f2609'
 
 	return (
-		<group rotation={[0, Math.PI / 1.2, 0]}>
+		<group {...groupProps}>
 			<mesh position={[0, 0, 0]}>
 				<boxBufferGeometry args={[1, 0.2, 3]} />
 				<meshStandardMaterial color={colour} />

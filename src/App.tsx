@@ -2,6 +2,7 @@ import { OrbitControls, Sky } from '@react-three/drei'
 import { Canvas, RenderProps } from '@react-three/fiber'
 import Boat from 'Boat'
 import Ocean from 'Ocean'
+import Penguin from 'Penguin'
 import { FC, Suspense } from 'react'
 
 const Scene: FC = () => {
@@ -17,7 +18,10 @@ const Scene: FC = () => {
 			/>
 			<Ocean />
 
-			<Boat />
+			<group rotation={[0, Math.PI / 0.55, 0]}>
+				<Boat scale={[2.5, 2.5, 2.5]} />
+				<Penguin position={[0, 0.75, 0]} />
+			</group>
 		</>
 	)
 }
